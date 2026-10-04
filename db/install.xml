@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/caseai/db" VERSION="20260930" COMMENT="XMLDB file for mod_caseai">
+    <TABLES>
+        <TABLE NAME="caseai" COMMENT="Case AI activity configuration">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT=""/>
+                <FIELD NAME="intro" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="scenario" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="studentrole" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="charactersjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="factsjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="immutablefactsjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="objectives" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="variablesjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="statesjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="eventsjson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="endcriteriajson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="maxrounds" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="10"/>
+                <FIELD NAME="rubric" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="rubricformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="completionattempt" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course" TYPE="foreign" FIELDS="course" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="course_ix" UNIQUE="false" FIELDS="course"/>
+            </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="caseai_attempts" COMMENT="Student attempts and deterministic current state">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="inprogress"/>
+                <FIELD NAME="currentround" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="stateversion" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
+                <FIELD NAME="currentstate" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="summary" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="false"/>
+                <FIELD NAME="gradedby" TYPE="int" LENGTH="10" NOTNULL="false"/>
+                <FIELD NAME="timegraded" TYPE="int" LENGTH="10" NOTNULL="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="timefinished" TYPE="int" LENGTH="10" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="caseai_fk" TYPE="foreign" FIELDS="caseaiid" REFTABLE="caseai" REFFIELDS="id"/>
+                <KEY NAME="user_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+                <KEY NAME="grader_fk" TYPE="foreign" FIELDS="gradedby" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="caseai_user_status_ix" UNIQUE="false" FIELDS="caseaiid, userid, status"/>
+                <INDEX NAME="caseai_user_ix" UNIQUE="false" FIELDS="caseaiid, userid"/>
+            </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="caseai_rounds" COMMENT="Immutable history of decisions and states per round">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="roundnum" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="decisiontext" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="narrative" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="nextquestion" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="evidencejson" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="statebefore" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="proposedchanges" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="appliedchanges" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="rejectedchanges" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="stateafter" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="attempt_fk" TYPE="foreign" FIELDS="attemptid" REFTABLE="caseai_attempts" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="attempt_round_uix" UNIQUE="true" FIELDS="attemptid, roundnum"/>
+            </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="caseai_rate" COMMENT="Rate limit counters for AI simulation requests">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="windowstart" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="requestcount" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="caseai_fk" TYPE="foreign" FIELDS="caseaiid" REFTABLE="caseai" REFFIELDS="id"/>
+                <KEY NAME="user_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="caseai_user_uix" UNIQUE="true" FIELDS="caseaiid, userid"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>
