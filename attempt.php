@@ -24,7 +24,7 @@
 
 require_once(__DIR__ . '/../../config.php');
 
-use mod_caseai\local\attempt_service;
+use mod_caseai\attempt_service;
 
 $id = required_param('id', PARAM_INT);
 $cm = get_coursemodule_from_id('caseai', $id, 0, false, MUST_EXIST);

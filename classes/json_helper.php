@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_caseai\local;
+namespace mod_caseai;
 
 use JsonException;
 use moodle_exception;

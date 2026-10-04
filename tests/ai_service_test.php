@@ -17,14 +17,14 @@
 namespace mod_caseai;
 
 use advanced_testcase;
-use mod_caseai\local\ai_service;
+use mod_caseai\ai_service;
 use moodle_exception;
 
 /**
  * AI response parser tests.
  *
  * @package mod_caseai
- * @covers \mod_caseai\local\ai_service
+ * @covers \mod_caseai\ai_service
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

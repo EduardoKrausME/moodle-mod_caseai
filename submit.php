@@ -25,7 +25,7 @@
 require_once(__DIR__ . '/../../config.php');
 
 use core\output\notification;
-use mod_caseai\local\attempt_service;
+use mod_caseai\attempt_service;
 
 $id = required_param('id', PARAM_INT);
 $attemptid = required_param('attemptid', PARAM_INT);

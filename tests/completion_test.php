@@ -40,7 +40,8 @@ final class completion_test extends advanced_testcase {
         $user = $this->getDataGenerator()->create_user();
         $caseai = (object)[
             'course' => $course->id, 'name' => 'Case', 'intro' => '', 'introformat' => FORMAT_HTML,
-            'scenario' => 'Scenario', 'studentrole' => '', 'charactersjson' => '[]', 'factsjson' => '[]', 'immutablefactsjson' => '[]',
+            'scenario' => 'Scenario', 'studentrole' => '', 'charactersjson' => '[]',
+            'factsjson' => '[]', 'immutablefactsjson' => '[]',
             'objectives' => '', 'variablesjson' => '{}', 'statesjson' => '[]', 'eventsjson' => '[]',
             'endcriteriajson' => '[]', 'maxrounds' => 1, 'rubric' => '', 'rubricformat' => FORMAT_HTML,
             'grade' => 0, 'completionattempt' => 1, 'timecreated' => time(), 'timemodified' => time(),

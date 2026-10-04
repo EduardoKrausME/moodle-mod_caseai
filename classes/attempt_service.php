@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_caseai\local;
+namespace mod_caseai;
 
 use cm_info;
 use completion_info;
@@ -104,7 +104,7 @@ class attempt_service {
      * @return stdClass
      */
     public static function submit_decision(stdClass $caseai, int $attemptid, int $userid, int $expectedversion,
-                                           string   $decision, $cm, stdClass $course): stdClass {
+                                           string $decision, $cm, stdClass $course): stdClass {
         global $DB;
         rate_limiter::consume((int)$caseai->id, $userid);
 

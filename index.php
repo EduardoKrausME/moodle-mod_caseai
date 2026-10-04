@@ -42,7 +42,8 @@ if (!$instances) {
     $table->head = [get_string('name'), get_string('description')];
     foreach ($instances as $instance) {
         $table->data[] = [
-            html_writer::link(new moodle_url('/mod/caseai/view.php', ['id' => $instance->coursemodule]), format_string($instance->name)),
+            html_writer::link(new moodle_url('/mod/caseai/view.php',
+                ['id' => $instance->coursemodule]), format_string($instance->name)),
             format_module_intro('caseai', $instance, $instance->coursemodule, false),
         ];
     }

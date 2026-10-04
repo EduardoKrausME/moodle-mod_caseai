@@ -25,6 +25,9 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/mod/caseai/backup/moodle2/restore_caseai_stepslib.php');
 
+/**
+ * Class restore_caseai_activity_task
+ */
 class restore_caseai_activity_task extends restore_activity_task {
     /**
      * No special settings are required.

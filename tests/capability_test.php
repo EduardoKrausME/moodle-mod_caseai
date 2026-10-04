@@ -37,7 +37,14 @@ final class capability_test extends advanced_testcase {
         $this->resetAfterTest();
         $capabilities = [];
         require($CFG->dirroot . '/mod/caseai/db/access.php');
-        foreach (['mod/caseai:addinstance', 'mod/caseai:view', 'mod/caseai:attempt', 'mod/caseai:viewreports', 'mod/caseai:grade'] as $capability) {
+        $capabilitys = [
+            'mod/caseai:addinstance',
+            'mod/caseai:view',
+            'mod/caseai:attempt',
+            'mod/caseai:viewreports',
+            'mod/caseai:grade',
+        ];
+        foreach ($capabilitys as $capability) {
             $this->assertArrayHasKey($capability, $capabilities);
         }
     }

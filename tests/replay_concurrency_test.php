@@ -18,14 +18,14 @@ namespace mod_caseai;
 
 use advanced_testcase;
 use dml_write_exception;
-use mod_caseai\local\attempt_service;
+use mod_caseai\attempt_service;
 use moodle_exception;
 
 /**
  * Replay and concurrency guard tests.
  *
  * @package mod_caseai
- * @covers \mod_caseai\local\attempt_service
+ * @covers \mod_caseai\attempt_service
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -63,11 +63,27 @@ final class replay_concurrency_test extends advanced_testcase {
         $user = $this->getDataGenerator()->create_user();
         $course = $this->getDataGenerator()->create_course();
         $caseaiid = $DB->insert_record('caseai', (object)[
-            'course' => $course->id, 'name' => 'Case', 'intro' => '', 'introformat' => FORMAT_HTML,
-            'scenario' => 'Scenario', 'studentrole' => '', 'charactersjson' => '[]', 'factsjson' => '[]', 'immutablefactsjson' => '[]',
-            'objectives' => '', 'variablesjson' => '{}', 'statesjson' => '[]', 'eventsjson' => '[]',
-            'endcriteriajson' => '[]', 'maxrounds' => 2, 'rubric' => '', 'rubricformat' => FORMAT_HTML,
-            'grade' => 0, 'completionattempt' => 0, 'timecreated' => time(), 'timemodified' => time(),
+            'course' => $course->id,
+            'name' => 'Case',
+            'intro' => '',
+            'introformat' => FORMAT_HTML,
+            'scenario' => 'Scenario',
+            'studentrole' => '',
+            'charactersjson' => '[]',
+            'factsjson' => '[]',
+            'immutablefactsjson' => '[]',
+            'objectives' => '',
+            'variablesjson' => '{}',
+            'statesjson' => '[]',
+            'eventsjson' => '[]',
+            'endcriteriajson' => '[]',
+            'maxrounds' => 2,
+            'rubric' => '',
+            'rubricformat' => FORMAT_HTML,
+            'grade' => 0,
+            'completionattempt' => 0,
+            'timecreated' => time(),
+            'timemodified' => time(),
         ]);
         $attemptid = $DB->insert_record('caseai_attempts', (object)[
             'caseaiid' => $caseaiid, 'userid' => $user->id, 'status' => 'inprogress', 'currentround' => 0,

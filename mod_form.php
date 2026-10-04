@@ -22,8 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use mod_caseai\local\json_helper;
-use mod_caseai\local\state_machine;
+use mod_caseai\json_helper;
+use mod_caseai\state_machine;
 
 defined('MOODLE_INTERNAL') || die;
 
@@ -155,7 +155,16 @@ class mod_caseai_mod_form extends moodleform_mod {
      */
     public function validation($data, $files) {
         $errors = parent::validation($data, $files);
-        foreach (['charactersjson', 'factsjson', 'immutablefactsjson', 'variablesjson', 'statesjson', 'eventsjson', 'endcriteriajson'] as $field) {
+        $fields = [
+            'charactersjson',
+            'factsjson',
+            'immutablefactsjson',
+            'variablesjson',
+            'statesjson',
+            'eventsjson',
+            'endcriteriajson',
+        ];
+        foreach ($fields as $field) {
             try {
                 json_helper::decode($data[$field] ?? '', $field);
             } catch (moodle_exception $e) {

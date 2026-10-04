@@ -17,13 +17,13 @@
 namespace mod_caseai;
 
 use advanced_testcase;
-use mod_caseai\local\state_machine;
+use mod_caseai\state_machine;
 
 /**
  * State machine tests.
  *
  * @package mod_caseai
- * @covers \mod_caseai\local\state_machine
+ * @covers \mod_caseai\state_machine
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

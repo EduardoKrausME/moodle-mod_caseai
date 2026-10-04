@@ -70,7 +70,9 @@ if (has_capability('mod/caseai:attempt', $context)) {
     echo $OUTPUT->single_button($url, $label, 'get');
 }
 if (has_capability('mod/caseai:viewreports', $context)) {
-    echo html_writer::div(html_writer::link(new moodle_url('/mod/caseai/report.php', ['id' => $cm->id]), get_string('viewreport', 'mod_caseai')));
+    echo html_writer::div(html_writer::link(
+        new moodle_url('/mod/caseai/report.php', ['id' => $cm->id]),
+        get_string('viewreport', 'mod_caseai')));
 }
 
 echo $OUTPUT->footer();

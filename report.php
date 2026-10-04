@@ -26,7 +26,7 @@ require_once(__DIR__ . '/../../config.php');
 require_once(__DIR__ . '/lib.php');
 
 use core\output\notification;
-use mod_caseai\local\ai_service;
+use mod_caseai\ai_service;
 
 $id = required_param('id', PARAM_INT);
 $attemptid = optional_param('attemptid', 0, PARAM_INT);
@@ -54,7 +54,9 @@ if ($attemptid && $action === 'summary') {
         $attempt->timemodified = time();
         $DB->update_record('caseai_attempts', $attempt);
     } catch (Throwable $e) {
-        redirect($PAGE->url->out(false, ['attemptid' => $attemptid]), get_string('error:summaryfailed', 'mod_caseai'), null, notification::NOTIFY_ERROR);
+        redirect($PAGE->url->out(false,
+            ['attemptid' => $attemptid]), get_string('error:summaryfailed', 'mod_caseai'),
+            null, notification::NOTIFY_ERROR);
     }
     redirect($PAGE->url->out(false, ['attemptid' => $attemptid]));
 }
@@ -97,12 +99,15 @@ if ($attemptid) {
         echo html_writer::tag('h5', get_string('consequence', 'mod_caseai'), ['class' => 'mt-3']);
         echo html_writer::div(format_text($round->narrative, FORMAT_PLAIN));
         echo html_writer::tag('h5', get_string('statebefore', 'mod_caseai'), ['class' => 'mt-3']);
-        echo html_writer::tag('pre', s(json_encode(json_decode($round->statebefore, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
+        echo html_writer::tag('pre',
+            s(json_encode(json_decode($round->statebefore, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
         echo html_writer::tag('h5', get_string('stateafter', 'mod_caseai'), ['class' => 'mt-3']);
-        echo html_writer::tag('pre', s(json_encode(json_decode($round->stateafter, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
+        echo html_writer::tag('pre',
+            s(json_encode(json_decode($round->stateafter, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
         if ($round->rejectedchanges && $round->rejectedchanges !== '[]') {
             echo html_writer::tag('h5', get_string('rejectedchanges', 'mod_caseai'), ['class' => 'mt-3']);
-            echo html_writer::tag('pre', s(json_encode(json_decode($round->rejectedchanges, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
+            echo html_writer::tag('pre',
+                s(json_encode(json_decode($round->rejectedchanges, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)));
         }
         echo html_writer::end_tag('div');
         echo html_writer::end_tag('section');
@@ -140,7 +145,8 @@ if ($attemptid) {
             continue;
         }
         $table->data[] = [
-            html_writer::link(new moodle_url('/mod/caseai/report.php', ['id' => $cm->id, 'attemptid' => $attempt->id]), fullname($user)),
+            html_writer::link(new moodle_url('/mod/caseai/report.php',
+                ['id' => $cm->id, 'attemptid' => $attempt->id]), fullname($user)),
             s($attempt->status),
             (int)$attempt->currentround,
             $attempt->grade === null ? '-' : format_float($attempt->grade, 2),

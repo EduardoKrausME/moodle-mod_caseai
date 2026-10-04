@@ -17,13 +17,13 @@
 namespace mod_caseai;
 
 use advanced_testcase;
-use mod_caseai\local\attempt_service;
+use mod_caseai\attempt_service;
 
 /**
  * Attempt persistence tests which do not invoke the external AI bridge.
  *
  * @package mod_caseai
- * @covers \mod_caseai\local\attempt_service
+ * @covers \mod_caseai\attempt_service
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

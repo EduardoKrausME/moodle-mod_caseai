@@ -32,7 +32,8 @@ class backup_caseai_activity_structure_step extends backup_activity_structure_st
 
         $caseai = new backup_nested_element('caseai', ['id'], [
             'name', 'intro', 'introformat', 'scenario', 'studentrole', 'charactersjson', 'factsjson', 'objectives',
-            'immutablefactsjson', 'variablesjson', 'statesjson', 'eventsjson', 'endcriteriajson', 'maxrounds', 'rubric', 'rubricformat',
+            'immutablefactsjson', 'variablesjson', 'statesjson', 'eventsjson',
+            'endcriteriajson', 'maxrounds', 'rubric', 'rubricformat',
             'grade', 'completionattempt', 'timecreated', 'timemodified',
         ]);
         $attempts = new backup_nested_element('attempts');

@@ -14,13 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_caseai\local;
+namespace mod_caseai;
 
 use core_text;
 use JsonException;
 use local_ai_bridge\api;
 use moodle_exception;
 use stdClass;
+
+// phpcs:disable moodle.Strings.ForbiddenStrings.Found
 
 /**
  * AI bridge integration for simulations and summaries.
@@ -99,7 +101,8 @@ class ai_service {
             ];
         }
         $payload = [
-            'task' => 'Create a concise teacher-facing summary of the path taken. Do not assign a grade and do not infer traits, intent, health, or personality.',
+            'task' => 'Create a concise teacher-facing summary of the path taken. ' .
+                'Do not assign a grade and do not infer traits, intent, health, or personality.',
             'objectives' => $caseai->objectives,
             'rubric' => strip_tags((string)$caseai->rubric),
             'history' => $history,

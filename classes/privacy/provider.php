@@ -135,7 +135,8 @@ class provider implements
                 writer::with_context($context)->export_data($subcontext, $data);
                 $rounds = $DB->get_records('caseai_rounds', ['attemptid' => $attempt->id], 'roundnum ASC');
                 foreach ($rounds as $round) {
-                    writer::with_context($context)->export_data(array_merge($subcontext, [get_string('roundlabel', 'mod_caseai', $round->roundnum)]), (object)[
+                    writer::with_context($context)->export_data(array_merge($subcontext,
+                        [get_string('roundlabel', 'mod_caseai', $round->roundnum)]), (object)[
                         'decision' => $round->decisiontext,
                         'narrative' => $round->narrative,
                         'nextquestion' => $round->nextquestion,
