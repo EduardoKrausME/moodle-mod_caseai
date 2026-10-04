@@ -32,8 +32,11 @@ final class capability_test extends advanced_testcase {
      * @return void Return value.
      */
     public function test_required_capabilities_are_declared(): void {
+        global $CFG;
+
         $this->resetAfterTest();
-        $capabilities = get_capabilities_from_disk('mod_caseai');
+        $capabilities = [];
+        require($CFG->dirroot . '/mod/caseai/db/access.php');
         foreach (['mod/caseai:addinstance', 'mod/caseai:view', 'mod/caseai:attempt', 'mod/caseai:viewreports', 'mod/caseai:grade'] as $capability) {
             $this->assertArrayHasKey($capability, $capabilities);
         }

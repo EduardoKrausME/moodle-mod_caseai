@@ -51,6 +51,7 @@ class attempt_service {
                 'status' => 'inprogress',
             ], '*', IGNORE_MULTIPLE);
             if ($attempt) {
+                $attempt->id = (int)$attempt->id;
                 return $attempt;
             }
             $definitions = json_helper::decode($caseai->variablesjson, 'variablesjson');
@@ -67,7 +68,7 @@ class attempt_service {
                 'timecreated' => $now,
                 'timemodified' => $now,
             ];
-            $record->id = $DB->insert_record('caseai_attempts', $record);
+            $record->id = (int)$DB->insert_record('caseai_attempts', $record);
             return $record;
         } finally {
             $lock->release();

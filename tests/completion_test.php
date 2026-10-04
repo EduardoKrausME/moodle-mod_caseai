@@ -32,8 +32,10 @@ final class completion_test extends advanced_testcase {
      * @return void Return value.
      */
     public function test_completed_attempt_is_detected_by_legacy_callback(): void {
-        global $DB;
+        global $CFG, $DB;
+
         $this->resetAfterTest();
+        require_once($CFG->dirroot . '/mod/caseai/lib.php');
         $course = $this->getDataGenerator()->create_course(['enablecompletion' => 1]);
         $user = $this->getDataGenerator()->create_user();
         $caseai = (object)[
@@ -49,6 +51,6 @@ final class completion_test extends advanced_testcase {
             'stateversion' => 2, 'currentstate' => '{}', 'timecreated' => time(), 'timemodified' => time(),
         ]);
         $cm = (object)['instance' => $caseai->id];
-        $this->assertTrue(caseai_get_completion_state($course, $cm, $user->id, COMPLETION_AND));
+        $this->assertTrue(\caseai_get_completion_state($course, $cm, $user->id, COMPLETION_AND));
     }
 }
