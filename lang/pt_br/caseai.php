@@ -77,6 +77,7 @@ $string['modulename'] = 'Estudo de caso adaptativo';
 $string['modulenameplural'] = 'Estudos de caso adaptativos';
 $string['nocaseais'] = 'Não há estudos de caso adaptativos neste curso.';
 $string['objectives'] = 'Objetivos de aprendizagem';
+$string['pluginadministration'] = 'Administração do estudo de caso adaptativo';
 $string['pluginname'] = 'Estudo de caso adaptativo';
 $string['privacy:metadata:attempts'] = 'Armazena cada tentativa do aluno e seu estado determinístico.';
 $string['privacy:metadata:attempts:currentstate'] = 'Estado determinístico atual do caso.';

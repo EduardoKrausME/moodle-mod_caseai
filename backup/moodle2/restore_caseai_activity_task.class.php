@@ -21,6 +21,10 @@
  * @copyright 2026 Eduardo Kraus {@link https://eduardokraus.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot . '/mod/caseai/backup/moodle2/restore_caseai_stepslib.php');
+
 class restore_caseai_activity_task extends restore_activity_task {
     /**
      * No special settings are required.
