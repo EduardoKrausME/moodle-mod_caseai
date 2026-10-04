@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/caseai/db" VERSION="20260930" COMMENT="XMLDB file for mod_caseai">
+<XMLDB PATH="mod/caseai/db" VERSION="20260930" COMMENT="XMLDB file for mod_caseai"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
     <TABLES>
         <TABLE NAME="caseai" COMMENT="Case AI activity configuration">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT=""/>
-                <FIELD NAME="intro" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="scenario" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="studentrole" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="charactersjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="factsjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="immutablefactsjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="objectives" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="variablesjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="statesjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="eventsjson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="endcriteriajson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="maxrounds" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="10"/>
-                <FIELD NAME="rubric" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="rubricformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="completionattempt" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="intro" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="scenario" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="studentrole" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="charactersjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="factsjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="immutablefactsjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="objectives" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="variablesjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="statesjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="eventsjson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="endcriteriajson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="maxrounds" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="10" SEQUENCE="false"/>
+                <FIELD NAME="rubric" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="rubricformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="completionattempt" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -38,19 +40,19 @@
         <TABLE NAME="caseai_attempts" COMMENT="Student attempts and deterministic current state">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="inprogress"/>
-                <FIELD NAME="currentround" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="stateversion" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1"/>
-                <FIELD NAME="currentstate" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="summary" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="false"/>
-                <FIELD NAME="gradedby" TYPE="int" LENGTH="10" NOTNULL="false"/>
-                <FIELD NAME="timegraded" TYPE="int" LENGTH="10" NOTNULL="false"/>
-                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="timefinished" TYPE="int" LENGTH="10" NOTNULL="false"/>
+                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="inprogress" SEQUENCE="false"/>
+                <FIELD NAME="currentround" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="stateversion" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="1" SEQUENCE="false"/>
+                <FIELD NAME="currentstate" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="summary" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="grade" TYPE="number" LENGTH="10" DECIMALS="5" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="gradedby" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="timegraded" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="timefinished" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -67,18 +69,18 @@
         <TABLE NAME="caseai_rounds" COMMENT="Immutable history of decisions and states per round">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="roundnum" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="decisiontext" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="narrative" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="nextquestion" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="evidencejson" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="statebefore" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="proposedchanges" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="appliedchanges" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="rejectedchanges" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="stateafter" TYPE="text" NOTNULL="true"/>
-                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="roundnum" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="decisiontext" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="narrative" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="nextquestion" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="evidencejson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="statebefore" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="proposedchanges" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="appliedchanges" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="rejectedchanges" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="stateafter" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -92,10 +94,10 @@
         <TABLE NAME="caseai_rate" COMMENT="Rate limit counters for AI simulation requests">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="windowstart" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-                <FIELD NAME="requestcount" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="caseaiid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="windowstart" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="requestcount" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
             </FIELDS>
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
