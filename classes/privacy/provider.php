@@ -136,15 +136,17 @@ class provider implements
                 $rounds = $DB->get_records('caseai_rounds', ['attemptid' => $attempt->id], 'roundnum ASC');
                 foreach ($rounds as $round) {
                     writer::with_context($context)->export_data(array_merge($subcontext,
-                        [get_string('roundlabel', 'mod_caseai', $round->roundnum)]), (object)[
-                        'decision' => $round->decisiontext,
-                        'narrative' => $round->narrative,
-                        'nextquestion' => $round->nextquestion,
-                        'evidence' => json_decode($round->evidencejson ?: '[]', true),
-                        'statebefore' => json_decode($round->statebefore, true),
-                        'stateafter' => json_decode($round->stateafter, true),
-                        'timecreated' => transform::datetime($round->timecreated),
-                    ]);
+                        [get_string('roundlabel', 'mod_caseai', $round->roundnum)]),
+                        (object)[
+                            'decision' => $round->decisiontext,
+                            'narrative' => $round->narrative,
+                            'nextquestion' => $round->nextquestion,
+                            'evidence' => json_decode($round->evidencejson ?: '[]', true),
+                            'statebefore' => json_decode($round->statebefore, true),
+                            'stateafter' => json_decode($round->stateafter, true),
+                            'timecreated' => transform::datetime($round->timecreated),
+                        ]
+                    );
                 }
             }
         }

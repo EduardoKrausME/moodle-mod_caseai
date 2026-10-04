@@ -59,7 +59,8 @@ class mod_caseai_mod_form extends moodleform_mod {
         $mform->addElement('textarea', 'factsjson', get_string('factsjson', 'mod_caseai'), ['rows' => 6, 'cols' => 90]);
         $mform->setType('factsjson', PARAM_RAW);
         $mform->setDefault('factsjson', '[]');
-        $mform->addElement('textarea', 'immutablefactsjson', get_string('immutablefactsjson', 'mod_caseai'), ['rows' => 6, 'cols' => 90]);
+        $mform->addElement('textarea', 'immutablefactsjson',
+            get_string('immutablefactsjson', 'mod_caseai'), ['rows' => 6, 'cols' => 90]);
         $mform->setType('immutablefactsjson', PARAM_RAW);
         $mform->setDefault('immutablefactsjson', '[]');
         $mform->addElement('textarea', 'objectives', get_string('objectives', 'mod_caseai'), ['rows' => 5, 'cols' => 90]);
@@ -69,7 +70,8 @@ class mod_caseai_mod_form extends moodleform_mod {
         $mform->addElement('static', 'variableshelp', '', get_string('variablesjson_help', 'mod_caseai'));
         $mform->addElement('textarea', 'variablesjson', get_string('variablesjson', 'mod_caseai'), ['rows' => 12, 'cols' => 90]);
         $mform->setType('variablesjson', PARAM_RAW);
-        $mform->setDefault('variablesjson', "{\n  \"status\": {\"type\": \"enum\", \"initial\": \"open\", \"values\": [\"open\", \"closed\"], \"mutable\": true}\n}");
+        $mform->setDefault('variablesjson',
+            "{\n  \"status\": {\"type\": \"enum\", \"initial\": \"open\", \"values\": [\"open\", \"closed\"], \"mutable\": true}\n}");
         $mform->addElement('textarea', 'statesjson', get_string('statesjson', 'mod_caseai'), ['rows' => 5, 'cols' => 90]);
         $mform->setType('statesjson', PARAM_RAW);
         $mform->setDefault('statesjson', '[]');
