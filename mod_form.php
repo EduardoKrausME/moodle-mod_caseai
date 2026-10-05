@@ -71,7 +71,14 @@ class mod_caseai_mod_form extends moodleform_mod {
         $mform->addElement('textarea', 'variablesjson', get_string('variablesjson', 'mod_caseai'), ['rows' => 12, 'cols' => 90]);
         $mform->setType('variablesjson', PARAM_RAW);
         $mform->setDefault('variablesjson',
-            "{\n  \"status\": {\"type\": \"enum\", \"initial\": \"open\", \"values\": [\"open\", \"closed\"], \"mutable\": true}\n}");
+            json_encode((object)[
+                'status' => (object)[
+                    'type' => 'enum',
+                    'initial' => 'open',
+                    'values' => (object)['open', 'closed'],
+                    'mutable' => true,
+                ],
+            ]));
         $mform->addElement('textarea', 'statesjson', get_string('statesjson', 'mod_caseai'), ['rows' => 5, 'cols' => 90]);
         $mform->setType('statesjson', PARAM_RAW);
         $mform->setDefault('statesjson', '[]');
