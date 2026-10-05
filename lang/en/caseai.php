@@ -72,6 +72,7 @@ $string['generatesummary'] = 'Generate/update summary';
 $string['gradingnote'] = 'Grades are never generated automatically. When a maximum grade is greater than zero, a teacher must review the attempt and enter the grade manually.';
 $string['immutablefactsjson'] = 'Facts that must never change (JSON)';
 $string['manualgrade'] = 'Human-reviewed grade';
+$string['maximumgrade'] = 'Maximum grade';
 $string['maxrounds'] = 'Maximum rounds';
 $string['modulename'] = 'Adaptive case study';
 $string['modulenameplural'] = 'Adaptive case studies';
