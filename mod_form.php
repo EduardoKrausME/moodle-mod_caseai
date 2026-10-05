@@ -89,7 +89,7 @@ class mod_caseai_mod_form extends moodleform_mod {
         $mform->addElement('header', 'assessment', get_string('assessment', 'mod_caseai'));
         $mform->addElement('editor', 'rubric_editor', get_string('rubric', 'mod_caseai'), null, ['maxfiles' => 0]);
         $mform->setType('rubric_editor', PARAM_RAW);
-        $mform->addElement('text', 'grade', get_string('maximumgrade', 'grades'));
+        $mform->addElement('text', 'grade', get_string('maximumgrade', 'mod_caseai'));
         $mform->setType('grade', PARAM_FLOAT);
         $mform->setDefault('grade', 0);
         $mform->addElement('static', 'gradingnote', '', get_string('gradingnote', 'mod_caseai'));
