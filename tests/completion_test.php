@@ -29,6 +29,7 @@ final class completion_test extends advanced_testcase {
     /**
      * Method test_completed_attempt_is_detected_by_legacy_callback.
      *
+     * @covers ::caseai_get_completion_state
      * @return void Return value.
      */
     public function test_completed_attempt_is_detected_by_legacy_callback(): void {
