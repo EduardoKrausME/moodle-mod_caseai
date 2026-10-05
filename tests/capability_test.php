@@ -29,6 +29,7 @@ final class capability_test extends advanced_testcase {
     /**
      * Method test_required_capabilities_are_declared.
      *
+     * @coversNothing
      * @return void Return value.
      */
     public function test_required_capabilities_are_declared(): void {
