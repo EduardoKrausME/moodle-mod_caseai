@@ -72,6 +72,7 @@ $string['generatesummary'] = 'Gerar/atualizar resumo';
 $string['gradingnote'] = 'A nota nunca é gerada automaticamente. Quando a nota máxima for maior que zero, um professor precisa revisar a tentativa e informar a nota manualmente.';
 $string['immutablefactsjson'] = 'Fatos que nunca podem mudar (JSON)';
 $string['manualgrade'] = 'Nota revisada por humano';
+$string['maximumgrade'] = 'Nota máxima';
 $string['maxrounds'] = 'Quantidade máxima de rodadas';
 $string['modulename'] = 'Estudo de caso adaptativo';
 $string['modulenameplural'] = 'Estudos de caso adaptativos';
