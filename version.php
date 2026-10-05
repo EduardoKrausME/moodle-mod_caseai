@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2026093000;
-$plugin->release = '1.0.1';
+$plugin->version = 2026100500;
+$plugin->release = '1.0.2';
 $plugin->component = 'mod_caseai';
 $plugin->requires = 2024100700;
 $plugin->maturity = MATURITY_ALPHA;
