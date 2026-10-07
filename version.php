@@ -28,7 +28,7 @@ $plugin->version = 2026100500;
 $plugin->release = '1.0.2';
 $plugin->component = 'mod_caseai';
 $plugin->requires = 2024100700;
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [
     'local_ai_bridge' => 2026093001,
 ];
