@@ -40,7 +40,7 @@ require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 require_capability('mod/caseai:attempt', $context);
 
-if (core_text::strlen($decision) < 1 || core_text::strlen($decision) > 12000) {
+if (strlen($decision) < 1 || strlen($decision) > 12000) {
     throw new moodle_exception('error:decisionlength', 'mod_caseai');
 }
 

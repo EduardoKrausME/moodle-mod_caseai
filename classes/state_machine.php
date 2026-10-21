@@ -16,7 +16,6 @@
 
 namespace mod_caseai;
 
-use core_text;
 use moodle_exception;
 
 /**
@@ -193,7 +192,7 @@ class state_machine {
         if (($type === 'integer' || $type === 'number') && isset($definition['max']) && $value > $definition['max']) {
             throw new moodle_exception('error:invalidstatevalue', 'mod_caseai', '', $name);
         }
-        if ($type === 'string' && isset($definition['maxlength']) && core_text::strlen($value) > (int)$definition['maxlength']) {
+        if ($type === 'string' && isset($definition['maxlength']) && strlen($value) > (int)$definition['maxlength']) {
             throw new moodle_exception('error:invalidstatevalue', 'mod_caseai', '', $name);
         }
     }

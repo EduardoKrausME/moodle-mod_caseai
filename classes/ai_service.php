@@ -16,7 +16,6 @@
 
 namespace mod_caseai;
 
-use core_text;
 use JsonException;
 use local_ai_bridge\api;
 use moodle_exception;
@@ -136,7 +135,7 @@ class ai_service {
             || !array_key_exists('evidence', $data) || !is_array($data['evidence'])) {
             throw new moodle_exception('error:malformedairesponse', 'mod_caseai');
         }
-        if (core_text::strlen($data['narrative']) > 20000 || core_text::strlen($data['nextquestion']) > 4000) {
+        if (strlen($data['narrative']) > 20000 || strlen($data['nextquestion']) > 4000) {
             throw new moodle_exception('error:airesponsetoolong', 'mod_caseai');
         }
         return [
