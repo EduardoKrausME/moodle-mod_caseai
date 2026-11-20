@@ -1,4 +1,4 @@
-# mod_caseai — Adaptive Case Study for Moodle 4.5+
+# mod_caseai - Adaptive Case Study for Moodle 4.5+
 
 `mod_caseai` is a formative adaptive case-study activity in which a teacher defines a scenario, case facts, immutable
 structural facts,
